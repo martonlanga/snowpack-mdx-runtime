@@ -1,39 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  // Create the count state.
-  const [count, setCount] = useState(0);
-  // Create the counter (+1 every second).
-  useEffect(() => {
-    const timer = setTimeout(() => setCount(count + 1), 1000);
-    return () => clearTimeout(timer);
-  }, [count, setCount]);
-  // Return the App component.
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          Page has been open for <code>{count}</code> seconds.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+import React from 'react';
+import MDX from '@mdx-js/runtime';
+// Provide custom components for markdown elements
+const components = {
+  h1: (props) => <h1 style={{ color: 'tomato' }} {...props} />,
+  Demo: (props) => <h1>This is a demo component</h1>,
+};
+// Provide variables that might be referenced by JSX
+const scope = {
+  some: 'value',
+};
+const mdx = `
+# Hello, world!
+<Demo />
+<div>Here is the scope variable: {some}</div>
+`;
+export default () => (
+  <MDX components={components} scope={scope}>
+    {mdx}
+  </MDX>
+);
