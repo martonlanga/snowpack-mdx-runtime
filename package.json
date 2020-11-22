@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@mdx-js/runtime": "^1.6.21",
+    "markdown-to-jsx": "^7.1.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0"
   },
