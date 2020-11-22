@@ -108,6 +108,7 @@ function sync(mdx, options = {}) {
     fileOpts.path = options.filepath;
   }
 
+  // Uncaught TypeError: (0 , _index.default) is not a function
   const { contents } = compiler.processSync(fileOpts);
 
   return `/* @jsxRuntime classic */
